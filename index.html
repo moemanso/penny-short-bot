@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Apex Shorts</title>
+<meta http-equiv="refresh" content="30">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-card: #1a1a24; --border: #2a2a3a; --text-primary: #f0f0f5; --text-secondary: #8888a0; --accent: #6366f1; --accent-glow: #818cf8; --win: #10b981; --loss: #ef4444; }
+body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); min-height: 100vh; background-image: radial-gradient(ellipse at top, #6366f115 0%, transparent 50%), radial-gradient(ellipse at bottom right, #10b98110 0%, transparent 40%); }
+.container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--accent), var(--accent-glow)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 0 30px #6366f140; }
+.logo h1 { font-size: 28px; font-weight: 700; background: linear-gradient(135deg, #fff 0%, #aaa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.status { display: flex; align-items: center; gap: 8px; background: var(--bg-card); padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border); font-size: 13px; color: var(--text-secondary); }
+.status-dot { width: 8px; height: 8px; background: var(--win); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+.stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-bottom: 40px; }
+.stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-align: center; }
+.stat-card .label { color: var(--text-secondary); font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-bottom: 12px; }
+.stat-card .value { font-size: 32px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.stat-card .value.win { color: var(--win); }
+.stat-card .value.loss { color: var(--loss); }
+.section { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 24px; }
+.section h2 { color: var(--text-primary); margin-bottom: 20px; font-size: 16px; font-weight: 600; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+th { color: var(--text-secondary); font-weight: 600; font-size: 11px; text-transform: uppercase; }
+td { font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+.ticker { background: var(--accent); color: white; padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 12px; }
+.stop { color: var(--loss); }
+.win { color: var(--win); }
+.loss { color: var(--loss); }
+.empty { text-align: center; color: var(--text-secondary); padding: 40px; }
+.footer { text-align: center; color: var(--text-secondary); font-size: 12px; padding-top: 20px; opacity: 0.6; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<div class="logo"><div class="logo-icon">📉</div><h1>Apex Shorts</h1></div>
+<div class="status"><div class="status-dot"></div>Paper Trading Active</div>
+</div>
+<div class="stats-grid">
+<div class="stat-card"><div class="label">Total Trades</div><div class="value">3</div></div>
+<div class="stat-card"><div class="label">W / L</div><div class="value">0 / 0</div></div>
+<div class="stat-card"><div class="label">Total P&L</div><div class="value win">$995.57</div></div>
+<div class="stat-card"><div class="label">Open P&L</div><div class="value win">$995.57</div></div>
+<div class="stat-card"><div class="label">Positions</div><div class="value">3</div></div>
+</div>
+<div class="section">
+<h2>📊 Open Positions</h2>
+<table><thead><tr><th>Symbol</th><th>Entry</th><th>Current</th><th>Shares</th><th>Stop</th><th>P&L</th></tr></thead>
+<tbody><tr>
+<td><span class="ticker">BBAI</span></td>
+<td>$3.96</td>
+<td>$3.80</td>
+<td>2,525</td>
+<td class="stop">$4.55</td>
+<td class="win">$404.00</td>
+</tr><tr>
+<td><span class="ticker">NVAX</span></td>
+<td>$10.64</td>
+<td>$10.01</td>
+<td>939</td>
+<td class="stop">$12.24</td>
+<td class="win">$591.57</td>
+</tr><tr>
+<td><span class="ticker">BTBT</span></td>
+<td>$1.62</td>
+<td>$1.62</td>
+<td>10,000</td>
+<td class="stop">$1.86</td>
+<td class="loss">$0.00</td>
+</tr></tbody></table>
+</div>
+<div class="section">
+<h2>📜 All Trades</h2>
+<table><thead><tr><th>Symbol</th><th>Entry</th><th>Exit</th><th>Shares</th><th>P&L</th><th>Status</th></tr></thead>
+<tbody><tr>
+<td><span class="ticker">BBAI</span></td>
+<td>$3.96</td>
+<td>$3.80</td>
+<td>2,525</td>
+<td class="win">$404.00</td>
+<td>OPEN</td>
+</tr><tr>
+<td><span class="ticker">NVAX</span></td>
+<td>$10.64</td>
+<td>$10.01</td>
+<td>939</td>
+<td class="win">$591.57</td>
+<td>OPEN</td>
+</tr><tr>
+<td><span class="ticker">BTBT</span></td>
+<td>$1.62</td>
+<td>$1.62</td>
+<td>10,000</td>
+<td class="loss">$0.00</td>
+<td>OPEN</td>
+</tr></tbody></table>
+</div>
+<div class="footer">Last updated: 2026-03-18 23:34:48 • Bot scans every 5 min • <a href="#" onclick="window.location.reload()">Refresh</a></div>
+</div>
+</body>
+</html>
